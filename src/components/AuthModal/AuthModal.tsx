@@ -1,7 +1,11 @@
 import React from 'react';
-import './App.css';
+import { Helmet } from "react-helmet";
+
 import { Button, Input, Modal, Tabs } from "pooldata-components";
 import type { InputType, InputColor, ButtonColor } from "pooldata-components";
+
+import * as Styled from './AuthModal.style';
+
 
 interface FieldProps {
   id: string;
@@ -58,7 +62,7 @@ const TABS = [
   }
 ];
 
-function App() {
+const AuthModal = () => {
   const List = TABS.map((item) => (
     <Tabs.Trigger
       key={`TabsTrigger-${item.id}`}
@@ -69,13 +73,12 @@ function App() {
   ));
 
   const Content = TABS.map((item) => (
-    <Tabs.Content
+    <Styled.TabContent
       key={`TabsContent-${item.id}`}
       value={item.id}
-      className="tab-content"
     >
       {item.fields.map((field) => (
-        <div className='field' key={`TabsContent-${item.id}-${field.id}`}>
+        <Styled.Field key={`TabsContent-${item.id}-${field.id}`}>
           <label htmlFor={`${item.id}-${field.id}`}>{field.name}</label>
           <Input
             id={`${item.id}-${field.id}`}
@@ -83,17 +86,21 @@ function App() {
             placeholder={field.placeholder}
             color={field.color}
           />
-        </div>
+        </Styled.Field>
       ))}
 
       <Modal.Close asChild>
-        <Button className="tab-button" color={item.color}>Enter</Button>
+        <Styled.TabButton color={item.color}>Enter</Styled.TabButton>
       </Modal.Close>
-    </Tabs.Content>
+    </Styled.TabContent>
   ));
 
   return (
-    <div className="App">
+    <Styled.App>
+      <Helmet>
+        <title>Demo components application</title>
+      </Helmet>
+
       <Modal.Root>
         <Modal.Trigger asChild>
           <Button>Authorization</Button>
@@ -107,8 +114,8 @@ function App() {
           </Tabs.Root>
         </Modal.Content>
       </Modal.Root>
-    </div>
+    </Styled.App>
   );
-}
+};
 
-export default App;
+export default AuthModal;
