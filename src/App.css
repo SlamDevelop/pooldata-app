@@ -1,3 +1,4 @@
+
 .App {
   display: flex;
   align-items: center;
@@ -11,15 +12,18 @@
   gap: .5rem;
   margin-top: 1rem;
 }
+
 .field:first-child {
   margin-top: 0;
 }
 
 div.tab-content {
-  padding: 0;
   padding-top: 20px;
 }
 
-.button {
-  padding: auto;
+button.tab-button {
+  display: flex;
+  width: 100%;
+  margin-top: 2rem;
+  box-sizing: border-box;
 }
