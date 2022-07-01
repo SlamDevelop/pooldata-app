@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from "react-helmet";
 
 import { Button, Input, Modal, Tabs } from "pooldata-components";
 import type { InputType, InputColor, ButtonColor } from "pooldata-components";
@@ -97,10 +96,6 @@ const AuthModal = () => {
 
   return (
     <Styled.App>
-      <Helmet>
-        <title>Demo components application</title>
-      </Helmet>
-
       <Modal.Root>
         <Modal.Trigger asChild>
           <Button>Authorization</Button>
